@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.alura.screenmatch.dto.EpisodioDTO;
 import br.com.alura.screenmatch.dto.SerieDTO;
 import br.com.alura.screenmatch.service.SerieService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/series")
@@ -36,5 +39,10 @@ public class SerieController {
 	@GetMapping("/{id}")
 	public SerieDTO obterPorId(@PathVariable Long id) {
 		return servico.obterPorId(id);
+	}
+	
+	@GetMapping("/{id}/temporadas/todas")
+	public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id) {
+		return servico.obterTodasAsTemporadas(id);
 	}
 }
